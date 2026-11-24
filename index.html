@@ -1,28 +1,147 @@
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mini Karaoke Updates</title>
+
   <style>
-    body { margin:0; font-family:system-ui,-apple-system,Segoe UI,sans-serif; background:#101522; color:#f4f6fb; }
-    main { max-width:620px; margin:8vh auto; padding:28px; }
-    .card { background:#1b2435; border:1px solid #34415a; border-radius:18px; padding:28px; }
-    .tag { color:#8ee6b1; font-weight:700; }
-    a.button { display:inline-block; margin:16px 0; padding:13px 20px; border-radius:10px; background:#2d9d68; color:white; text-decoration:none; font-weight:700; }
-    small { color:#aeb9cb; }
+    body {
+      margin: 0;
+      font-family: system-ui,-apple-system,Segoe UI,sans-serif;
+      background: #101522;
+      color: #f4f6fb;
+    }
+
+    main {
+      max-width: 620px;
+      margin: 8vh auto;
+      padding: 28px;
+    }
+
+    .card {
+      background: #1b2435;
+      border: 1px solid #34415a;
+      border-radius: 18px;
+      padding: 28px;
+    }
+
+    .tag {
+      color: #8ee6b1;
+      font-weight: 700;
+    }
+
+    a.button {
+      display: inline-block;
+      margin: 16px 0;
+      padding: 13px 20px;
+      border-radius: 10px;
+      background: #2d9d68;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    small {
+      color: #aeb9cb;
+    }
+
+    #status {
+      color: #aeb9cb;
+    }
   </style>
 </head>
+
 <body>
 <main>
   <div class="card">
+
     <h1>Mini Karaoke</h1>
-    <p class="tag">Latest published version: v1.14.2</p>
-    <p>Download the Android APK from the official GitHub release.</p>
-    <a class="button" href="https://github.com/Pythonweb86/Minikaraoke-Update/releases/download/1.14.2/Mini_Karaoke_1.14.2.apk">Download APK v1.14.2</a>
-    <p><a href="https://github.com/Pythonweb86/Minikaraoke-Update/releases/latest" style="color:#a9c7ff">View all releases</a></p>
-    <small>Installations are confirmed by Android. Keep the same package name and signing key for in-place updates.</small>
+
+    <p class="tag" id="version">
+      Loading latest version...
+    </p>
+
+    <p id="releaseNotes">
+      Checking for updates...
+    </p>
+
+    <a class="button"
+       id="downloadButton"
+       href="#"
+       style="display:none">
+       Download APK
+    </a>
+
+    <p>
+      <a
+        href="https://github.com/Pythonweb86/Minikaraoke-Update/releases/latest"
+        style="color:#a9c7ff">
+        View all releases
+      </a>
+    </p>
+
+    <p id="status">Connecting to update server...</p>
+
+    <small>
+      Installations are confirmed by Android.
+      Keep the same package name and signing key
+      for in-place updates.
+    </small>
+
   </div>
 </main>
+
+<script>
+async function loadUpdate() {
+  const version = document.getElementById("version");
+  const notes = document.getElementById("releaseNotes");
+  const button = document.getElementById("downloadButton");
+  const status = document.getElementById("status");
+
+  try {
+    const response = await fetch(
+      "update.json?t=" + Date.now(),
+      { cache: "no-store" }
+    );
+
+    if (!response.ok) {
+      throw new Error("Unable to load update.json");
+    }
+
+    const data = await response.json();
+
+    if (!data.version || !data.apkUrl) {
+      throw new Error("Invalid update information");
+    }
+
+    version.textContent =
+      "Latest published version: v" + data.version;
+
+    notes.textContent =
+      data.releaseNotes || "No release notes available.";
+
+    button.href = data.apkUrl;
+    button.textContent =
+      "Download APK v" + data.version;
+
+    button.style.display = "inline-block";
+
+    status.textContent = "Update information loaded successfully.";
+
+  } catch (error) {
+    version.textContent = "Update information unavailable";
+    notes.textContent =
+      "Please try again later.";
+
+    status.textContent =
+      "Could not connect to the update server.";
+  }
+}
+
+loadUpdate();
+</script>
+
 </body>
 </html>
