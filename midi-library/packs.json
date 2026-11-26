@@ -1,0 +1,31 @@
+{
+  "packs": [
+    {
+      "id": "midi_pack_048",
+      "title": "MIDI Pack 048 (997 songs)",
+      "description": "997 MIDI songs",
+      "url": "https://drive.usercontent.google.com/download?id=12XyRnTPMi_5OIaXqu0e4mFHgqUWZWyMj&export=download&confirm=t",
+      "sha256": "b039e9bc2fe70df63113834613dce28a1b59f88fde5646205ad464647c0ab9d9",
+      "size": 53736756,
+      "unpacked": 53561394
+    },
+    {
+      "id": "zzint_a_net",
+      "title": "ZZ Interrupt Test A (network)",
+      "description": "Temporary interruption test - 5 songs",
+      "url": "https://drive.usercontent.google.com/download?id=1L34NV7M-YD-3I8T8QpmM9p7NFGRyuMwR&export=download&confirm=t",
+      "sha256": "b57a30797fe7a8f712cd9ae637d535ddfcc2c0ac5691aacdb2bc5f363721c831",
+      "size": 125830408,
+      "unpacked": 125829670
+    },
+    {
+      "id": "zzint_b_stop",
+      "title": "ZZ Interrupt Test B (force-stop)",
+      "description": "Temporary interruption test - 5 songs",
+      "url": "https://drive.usercontent.google.com/download?id=1FjPWsnXCXC9_zKaVKK4i3-0jgg8mGwwF&export=download&confirm=t",
+      "sha256": "8a8870c716199f27bb00a691bb4cd7249dd8c135fea35a5a912a68a5c53e2c7f",
+      "size": 125830413,
+      "unpacked": 125829675
+    }
+  ]
+}
