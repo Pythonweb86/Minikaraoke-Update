@@ -1,0 +1,31 @@
+{
+  "packs": [
+    {
+      "id": "midi_pack_048",
+      "title": "MIDI Pack 048 (997 songs)",
+      "description": "997 MIDI songs",
+      "url": "https://drive.usercontent.google.com/download?id=12XyRnTPMi_5OIaXqu0e4mFHgqUWZWyMj&export=download&confirm=t",
+      "sha256": "b039e9bc2fe70df63113834613dce28a1b59f88fde5646205ad464647c0ab9d9",
+      "size": 53736756,
+      "unpacked": 53561394
+    },
+    {
+      "id": "canary_a_add",
+      "title": "Canary A (temporary)",
+      "description": "Temporary test pack",
+      "url": "https://drive.usercontent.google.com/download?id=1nItiTonDj4ab-d8DJwBGlebk75nND5lF&export=download&confirm=t",
+      "sha256": "d052972d404e7722974035c11f97ce92533d108b3eaf838dd118aaa6acd90eac",
+      "size": 183,
+      "unpacked": 38
+    },
+    {
+      "id": "canary_b_collide",
+      "title": "Canary B (temporary)",
+      "description": "Temporary test pack",
+      "url": "https://drive.usercontent.google.com/download?id=1knGOIOPdgys8uMjzv-Si1mJywJojHajP&export=download&confirm=t",
+      "sha256": "62e95f780d73d279e3fc8fbd08df598df5889d22a352ccb96e614f71f9f02f17",
+      "size": 372,
+      "unpacked": 105
+    }
+  ]
+}
