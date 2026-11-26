@@ -1,0 +1,13 @@
+{
+  "packs": [
+    {
+      "id": "midi_pack_048",
+      "title": "MIDI Pack 048 (997 songs)",
+      "description": "997 MIDI songs",
+      "url": "https://drive.google.com/uc?export=download&id=12XyRnTPMi_5OIaXqu0e4mFHgqUWZWyMj",
+      "sha256": "b039e9bc2fe70df63113834613dce28a1b59f88fde5646205ad464647c0ab9d9",
+      "size": 53736756,
+      "unpacked": 53561394
+    }
+  ]
+}
