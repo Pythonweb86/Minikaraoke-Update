@@ -1,147 +1,60 @@
-
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mini Karaoke Updates</title>
-
-  <style>
-    body {
-      margin: 0;
-      font-family: system-ui,-apple-system,Segoe UI,sans-serif;
-      background: #101522;
-      color: #f4f6fb;
-    }
-
-    main {
-      max-width: 620px;
-      margin: 8vh auto;
-      padding: 28px;
-    }
-
-    .card {
-      background: #1b2435;
-      border: 1px solid #34415a;
-      border-radius: 18px;
-      padding: 28px;
-    }
-
-    .tag {
-      color: #8ee6b1;
-      font-weight: 700;
-    }
-
-    a.button {
-      display: inline-block;
-      margin: 16px 0;
-      padding: 13px 20px;
-      border-radius: 10px;
-      background: #2d9d68;
-      color: white;
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    small {
-      color: #aeb9cb;
-    }
-
-    #status {
-      color: #aeb9cb;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080b16">
+<meta name="description" content="Mini Karaoke Android app updates and direct APK downloads.">
+<title>Mini Karaoke | Neon Update Center</title>
+<style>
+:root{color-scheme:dark;--bg:#080b16;--panel:#11182a;--text:#f5f7ff;--muted:#aab4cc;--line:#29334d;--cyan:#55e6ff;--violet:#a78bfa;--pink:#ff78bd;--green:#63e6ad}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 80% -15%,#34205e 0,transparent 38%),radial-gradient(ellipse at 10% 5%,#103d50 0,transparent 32%),var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;display:grid;place-items:center;padding:24px}
+main{width:min(720px,100%)}.brand{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 0 25px;font-weight:900;letter-spacing:.1em}.logo{width:48px;height:48px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(135deg,#28d8dc,#8b5cf6 65%,#ed68b6);font-size:25px;box-shadow:0 8px 30px #8b5cf644}
+.card{padding:clamp(23px,5vw,42px);border:1px solid #ffffff20;border-radius:26px;background:linear-gradient(145deg,#1b2540ef,#101728f2);box-shadow:0 24px 80px #0008;text-align:center}
+.eyebrow{display:inline-block;padding:6px 13px;border:1px solid #55e6ff55;border-radius:99px;color:var(--cyan);background:#55e6ff0c;font-size:11px;font-weight:800;letter-spacing:.14em}
+h1{font-size:clamp(36px,8vw,58px);line-height:1.05;letter-spacing:-.05em;margin:20px 0 12px}h1 span{background:linear-gradient(90deg,var(--cyan),var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);max-width:520px;margin:0 auto 24px}.version{font-size:19px;font-weight:800;margin:22px 0 5px}.notes{color:var(--muted);margin:0 0 20px}
+.button{display:flex;justify-content:center;align-items:center;width:100%;padding:16px 20px;border-radius:14px;background:linear-gradient(100deg,#55e6ff,#8b9cff 55%,#b78cff);color:#090d1a;text-decoration:none;font-weight:900;font-size:17px;box-shadow:0 10px 32px #55e6ff30;transition:transform .2s}.button:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.status{min-height:24px;color:var(--green);font-size:13px;margin:13px 0}.links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:20px}.links a{color:var(--cyan);font-weight:700;text-decoration:none}.fine{color:#8792aa;font-size:12px;margin-top:25px}
+</style>
 </head>
-
 <body>
 <main>
-  <div class="card">
-
-    <h1>Mini Karaoke</h1>
-
-    <p class="tag" id="version">
-      Loading latest version...
-    </p>
-
-    <p id="releaseNotes">
-      Checking for updates...
-    </p>
-
-    <a class="button"
-       id="downloadButton"
-       href="#"
-       style="display:none">
-       Download APK
-    </a>
-
-    <p>
-      <a
-        href="https://github.com/Pythonweb86/Minikaraoke-Update/releases/latest"
-        style="color:#a9c7ff">
-        View all releases
-      </a>
-    </p>
-
-    <p id="status">Connecting to update server...</p>
-
-    <small>
-      Installations are confirmed by Android.
-      Keep the same package name and signing key
-      for in-place updates.
-    </small>
-
-  </div>
+<div class="brand"><span class="logo">🎤</span><span>MINI KARAOKE<br><small style="font-size:10px;color:#aab4cc">NEON UPDATE CENTER</small></span></div>
+<section class="card">
+<span class="eyebrow">♪ ANDROID APP UPDATE</span>
+<h1>Your music.<br><span>Always updated.</span></h1>
+<p class="lead">Get the latest Mini Karaoke Android release and keep your karaoke experience up to date.</p>
+<div class="version" id="version">Loading latest version…</div>
+<p class="notes" id="releaseNotes">Checking update information…</p>
+<a class="button" id="downloadButton" href="https://github.com/jericlangco/Minikaraoke-Update/releases/download/1.14.4/Mini_Karaoke_1.14.4.apk">↓ Download APK</a>
+<p class="status" id="status" aria-live="polite">Preparing direct download…</p>
+<div class="links"><a href="https://github.com/jericlangco/Minikaraoke-Update/releases">All releases</a><a href="https://jericlangco.github.io/Minikaraoke-Website/">Official website</a></div>
+<p class="fine">Downloads are hosted by GitHub Releases. Android will ask you to confirm installation. Only install APKs from sources you trust.</p>
+</section>
+<p class="fine" style="text-align:center">© <span id="year"></span> Mini Karaoke · Maintained by Jeric Langco</p>
 </main>
-
 <script>
-async function loadUpdate() {
-  const version = document.getElementById("version");
-  const notes = document.getElementById("releaseNotes");
-  const button = document.getElementById("downloadButton");
-  const status = document.getElementById("status");
-
-  try {
-    const response = await fetch(
-      "update.json?t=" + Date.now(),
-      { cache: "no-store" }
-    );
-
-    if (!response.ok) {
-      throw new Error("Unable to load update.json");
-    }
-
-    const data = await response.json();
-
-    if (!data.version || !data.apkUrl) {
-      throw new Error("Invalid update information");
-    }
-
-    version.textContent =
-      "Latest published version: v" + data.version;
-
-    notes.textContent =
-      data.releaseNotes || "No release notes available.";
-
-    button.href = data.apkUrl;
-    button.textContent =
-      "Download APK v" + data.version;
-
-    button.style.display = "inline-block";
-
-    status.textContent = "Update information loaded successfully.";
-
-  } catch (error) {
-    version.textContent = "Update information unavailable";
-    notes.textContent =
-      "Please try again later.";
-
-    status.textContent =
-      "Could not connect to the update server.";
-  }
+document.getElementById('year').textContent = new Date().getFullYear();
+async function loadUpdate(){
+ const version=document.getElementById('version'),notes=document.getElementById('releaseNotes'),button=document.getElementById('downloadButton'),status=document.getElementById('status');
+ try{
+  const response=await fetch('update.json?t='+Date.now(),{cache:'no-store'});
+  if(!response.ok)throw new Error('Update information unavailable');
+  const data=await response.json();
+  if(!data.version||!data.apkUrl)throw new Error('Invalid update information');
+  version.textContent='Latest release · v'+data.version;
+  notes.textContent=data.releaseNotes||'Latest Mini Karaoke Android release.';
+  button.href=data.apkUrl;
+  button.textContent='↓ Download APK';
+  status.textContent='Direct APK download is ready.';
+ }catch(error){
+  version.textContent='Mini Karaoke · v1.14.4';
+  notes.textContent='Use the direct GitHub release download.';
+  status.textContent='Using the current published APK link.';
+ }
 }
-
 loadUpdate();
 </script>
-
 </body>
 </html>
