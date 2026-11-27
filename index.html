@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#080b16">
-<meta name="description" content="Mini Karaoke Android app updates and direct APK downloads.">
+<meta name="description" content="Mini Karaoke Android APK releases and updates.">
 <title>Mini Karaoke | Neon Update Center</title>
 <style>
-:root{color-scheme:dark;--bg:#080b16;--panel:#11182a;--text:#f5f7ff;--muted:#aab4cc;--line:#29334d;--cyan:#55e6ff;--violet:#a78bfa;--pink:#ff78bd;--green:#63e6ad}
+:root{color-scheme:dark;--bg:#080b16;--text:#f5f7ff;--muted:#aab4cc;--cyan:#55e6ff;--violet:#a78bfa;--pink:#ff78bd;--green:#63e6ad}
 *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 80% -15%,#34205e 0,transparent 38%),radial-gradient(ellipse at 10% 5%,#103d50 0,transparent 32%),var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;display:grid;place-items:center;padding:24px}
 main{width:min(720px,100%)}.brand{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 0 25px;font-weight:900;letter-spacing:.1em}.logo{width:48px;height:48px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(135deg,#28d8dc,#8b5cf6 65%,#ed68b6);font-size:25px;box-shadow:0 8px 30px #8b5cf644}
 .card{padding:clamp(23px,5vw,42px);border:1px solid #ffffff20;border-radius:26px;background:linear-gradient(145deg,#1b2540ef,#101728f2);box-shadow:0 24px 80px #0008;text-align:center}
@@ -25,36 +25,42 @@ h1{font-size:clamp(36px,8vw,58px);line-height:1.05;letter-spacing:-.05em;margin:
 <span class="eyebrow">♪ ANDROID APP UPDATE</span>
 <h1>Your music.<br><span>Always updated.</span></h1>
 <p class="lead">Get the latest Mini Karaoke Android release and keep your karaoke experience up to date.</p>
-<div class="version" id="version">Loading latest version…</div>
-<p class="notes" id="releaseNotes">Checking update information…</p>
-<a class="button" id="downloadButton" href="https://github.com/jericlangco/Minikaraoke-Update/releases/download/1.14.4/Mini_Karaoke_1.14.4.apk">↓ Download APK</a>
-<p class="status" id="status" aria-live="polite">Preparing direct download…</p>
+<div class="version" id="version">Checking latest release…</div>
+<p class="notes" id="notes">Finding the published APK asset.</p>
+<a class="button" id="download" href="https://github.com/jericlangco/Minikaraoke-Update/releases/latest">↓ Download APK</a>
+<p class="status" id="status" aria-live="polite">Looking for the latest APK…</p>
 <div class="links"><a href="https://github.com/jericlangco/Minikaraoke-Update/releases">All releases</a><a href="https://jericlangco.github.io/Minikaraoke-Website/">Official website</a></div>
-<p class="fine">Downloads are hosted by GitHub Releases. Android will ask you to confirm installation. Only install APKs from sources you trust.</p>
+<p class="fine">The button links directly to the APK asset attached to the latest GitHub Release. Android may ask you to confirm installation. Only install apps from sources you trust.</p>
 </section>
 <p class="fine" style="text-align:center">© <span id="year"></span> Mini Karaoke · Maintained by Jeric Langco</p>
 </main>
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
-async function loadUpdate(){
- const version=document.getElementById('version'),notes=document.getElementById('releaseNotes'),button=document.getElementById('downloadButton'),status=document.getElementById('status');
- try{
-  const response=await fetch('update.json?t='+Date.now(),{cache:'no-store'});
-  if(!response.ok)throw new Error('Update information unavailable');
-  const data=await response.json();
-  if(!data.version||!data.apkUrl)throw new Error('Invalid update information');
-  version.textContent='Latest release · v'+data.version;
-  notes.textContent=data.releaseNotes||'Latest Mini Karaoke Android release.';
-  button.href=data.apkUrl;
-  button.textContent='↓ Download APK';
-  status.textContent='Direct APK download is ready.';
- }catch(error){
-  version.textContent='Mini Karaoke · v1.14.4';
-  notes.textContent='Use the direct GitHub release download.';
-  status.textContent='Using the current published APK link.';
+(async () => {
+ const version = document.getElementById('version');
+ const notes = document.getElementById('notes');
+ const button = document.getElementById('download');
+ const status = document.getElementById('status');
+ try {
+   const response = await fetch('https://api.github.com/repos/jericlangco/Minikaraoke-Update/releases/latest', {
+     headers: { Accept: 'application/vnd.github+json' }, cache: 'no-store'
+   });
+   if (!response.ok) throw new Error('GitHub release lookup unavailable');
+   const release = await response.json();
+   const apk = (release.assets || []).find(asset => asset.name && asset.name.toLowerCase().endsWith('.apk'));
+   if (!apk || !apk.browser_download_url) throw new Error('No APK asset is attached to the latest release');
+   version.textContent = 'Latest release · ' + (release.tag_name || release.name || '');
+   notes.textContent = release.name || 'Latest Mini Karaoke Android release.';
+   button.href = apk.browser_download_url;
+   button.textContent = '↓ Download APK';
+   status.textContent = 'Direct APK download is ready.';
+ } catch (error) {
+   version.textContent = 'Latest release';
+   notes.textContent = 'The release list is available on GitHub.';
+   button.href = 'https://github.com/jericlangco/Minikaraoke-Update/releases/latest';
+   status.textContent = 'Could not identify the APK automatically. Open releases to choose the APK asset.';
  }
-}
-loadUpdate();
+})();
 </script>
 </body>
 </html>
