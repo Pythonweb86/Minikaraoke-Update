@@ -1,8 +1,7 @@
-
 {
   "version": "1.14.4",
   "versionCode": 11404,
-  "apkUrl": "https://github.com/Pythonweb86/Minikaraoke-Update/releases/download/1.14.4/Mini_Karaoke_1.14.4.apk",
+  "apkUrl": "https://github.com/jericlangco/Minikaraoke-Update/releases/download/1.14.4/Mini_Karaoke_1.14.4.apk",
   "releaseNotes": "Mini Karaoke v1.14.4 update.",
-  "releasePage": "https://github.com/Pythonweb86/Minikaraoke-Update/releases/latest"
+  "releasePage": "https://github.com/jericlangco/Minikaraoke-Update/releases/tag/1.14.4"
 }
